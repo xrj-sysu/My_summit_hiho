@@ -16,15 +16,10 @@ string post_order(string s1, string s2) {
                 len1++;
                 s2_left += s2[i];
           }
-          for (i = i + 1; i < s2.size(); ++i) {
-              s2_right += s2[i];
-          }
-          for (i = 1; i <= len1; ++i) {
-              s1_left += s1[i];
-          }
-          for (; i < s1.size(); ++i) {
-              s1_right += s1[i];
-          }
+          len2 = s2.size() - len1 - 1;
+          s2_right = s2.substr(i+1, len2);
+          s1_left = s1.substr(1, len1);
+          s1_right = s2.substr(len1+1, len2);
           return post_order(s1_left, s2_left) + post_order(s1_right, s2_right) + s1[0];
       }
 }
